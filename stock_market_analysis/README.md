@@ -1,4 +1,4 @@
-# Stock Market Analysis (India vs US)
+# Stock Market Analysis (India vs US) - SQL
 
 > Picks up from the data collection and EDA here: [python-projects/stock_market_analysis](https://github.com/tharunsajeev/python-projects/tree/main/stock_market_analysis)
 
