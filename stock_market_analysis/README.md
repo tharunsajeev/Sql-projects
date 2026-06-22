@@ -4,11 +4,11 @@
 
 ## What this is
 
-This is the SQL half of the stock market project same dataset, different angle. The Python side covers collecting the data from the Alpha Vantage API and doing the first pass of exploration with pandas. Here I loaded that same data into MySQL and wrote a set of queries to dig into it more analytically, using a lot of the same techniques from my Olist project — window functions, CTEs, ranking — applied to a different kind of dataset this time.
+This is the SQL half of the stock market project same dataset, different angle. The Python side covers collecting the data from the Alpha Vantage API and doing the first pass of exploration with pandas. Here I loaded that same data into MySQL and wrote a set of queries to dig into it more analytically, using a lot of the same techniques from my Olist project :- window functions, CTEs, ranking applied to a different kind of dataset this time.
 
 ## The data
 
-800 rows, 7 columns :- `date`, `open`, `high`, `low`, `close`, `volume`, `ticker` — covering 100 trading days for 6 Indian stocks (RELIANCE, TCS, INFY, HDFCBANK, WIPRO, ICICIBANK) and 2 US stocks (AAPL, MSFT), Jan to Jun 2026.
+800 rows, 7 columns :- `date`, `open`, `high`, `low`, `close`, `volume`, `ticker` covering 100 trading days for 6 Indian stocks (RELIANCE, TCS, INFY, HDFCBANK, WIPRO, ICICIBANK) and 2 US stocks (AAPL, MSFT), Jan to Jun 2026.
 
 ## What's in the queries
 
@@ -24,7 +24,7 @@ This is the SQL half of the stock market project same dataset, different angle. 
 
 ## What I found
 
-TCS came out as the most volatile stock by average daily price range, and WIPRO the least — which lines up with what the Python EDA found independently, so it was a nice sanity check that both approaches agree. Grouping by market also confirmed the broader pattern from the Python side: the Indian stocks had a lower average close and a wider average daily range than the two US stocks over this stretch, and the monthly breakdown showed the IT stock decline wasn't one sharp drop but a slow slide across most of the months.
+TCS came out as the most volatile stock by average daily price range, and WIPRO the least which lines up with what the Python EDA found independently, so it was a nice sanity check that both approaches agree. Grouping by market also confirmed the broader pattern from the Python side: the Indian stocks had a lower average close and a wider average daily range than the two US stocks over this stretch, and the monthly breakdown showed the IT stock decline wasn't one sharp drop but a slow slide across most of the months.
 
 ## Tools
 
@@ -32,9 +32,9 @@ MySQL 8.0, MySQL Workbench
 
 ## A few things that tripped me up
 
-- `LOAD DATA INFILE` kept failing with a `secure_file_priv` error — turns out MySQL only allows file imports from one specific folder, which I had to look up with `SHOW VARIABLES LIKE 'secure_file_priv'` before the load would work
-- I originally set prices as `DECIMAL(10,2)`, which quietly truncated any value with more than 2 decimal places — some of the source data had 4. Switched to `DECIMAL(10,4)` to keep the original precision and just round when displaying instead
-- Couldn't filter or sort directly on a window function's output in the same query — had to calculate it inside a CTE first, then filter in the outer query
+- `LOAD DATA INFILE` kept failing with a `secure_file_priv` error turns out MySQL only allows file imports from one specific folder, which I had to look up with `SHOW VARIABLES LIKE 'secure_file_priv'` before the load would work
+- I originally set prices as `DECIMAL(10,2)`, which quietly truncated any value with more than 2 decimal places some of the source data had 4. Switched to `DECIMAL(10,4)` to keep the original precision and just round when displaying instead
+- Couldn't filter or sort directly on a window function's output in the same query had to calculate it inside a CTE first, then filter in the outer query
 
 ## Running it yourself
 
