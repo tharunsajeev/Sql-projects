@@ -1,18 +1,18 @@
-# Stock Market Analysis (India vs US) — SQL
+# Stock Market Analysis (India vs US)
 
 > Picks up from the data collection and EDA here: [python-projects/stock_market_analysis](https://github.com/tharunsajeev/python-projects/tree/main/stock_market_analysis)
 
 ## What this is
 
-This is the SQL half of the stock market project — same dataset, different angle. The Python side covers collecting the data from the Alpha Vantage API and doing the first pass of exploration with pandas. Here I loaded that same data into MySQL and wrote a set of queries to dig into it more analytically, using a lot of the same techniques from my Olist project — window functions, CTEs, ranking — applied to a different kind of dataset this time.
+This is the SQL half of the stock market project same dataset, different angle. The Python side covers collecting the data from the Alpha Vantage API and doing the first pass of exploration with pandas. Here I loaded that same data into MySQL and wrote a set of queries to dig into it more analytically, using a lot of the same techniques from my Olist project — window functions, CTEs, ranking — applied to a different kind of dataset this time.
 
 ## The data
 
-800 rows, 7 columns — `date`, `open`, `high`, `low`, `close`, `volume`, `ticker` — covering 100 trading days for 6 Indian stocks (RELIANCE, TCS, INFY, HDFCBANK, WIPRO, ICICIBANK) and 2 US stocks (AAPL, MSFT), Jan to Jun 2026.
+800 rows, 7 columns :- `date`, `open`, `high`, `low`, `close`, `volume`, `ticker` — covering 100 trading days for 6 Indian stocks (RELIANCE, TCS, INFY, HDFCBANK, WIPRO, ICICIBANK) and 2 US stocks (AAPL, MSFT), Jan to Jun 2026.
 
 ## What's in the queries
 
-- summary stats per stock — average, highest, lowest close, average volume
+- summary stats per stock :- average, highest, lowest close, average volume
 - a 20-day moving average calculated directly in SQL with `AVG() OVER (PARTITION BY ... ROWS BETWEEN ...)`, instead of the `.rolling()` version I'd already done in pandas
 - daily percentage return using `LAG()` to compare each row to the day before it
 - the 5 biggest single-day gains and the 5 biggest single-day drops, using a CTE to get around the fact that you can't filter directly on a window function result
