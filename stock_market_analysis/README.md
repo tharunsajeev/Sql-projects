@@ -36,7 +36,7 @@ MySQL 8.0, MySQL Workbench
 - I originally set prices as `DECIMAL(10,2)`, which quietly truncated any value with more than 2 decimal places some of the source data had 4. Switched to `DECIMAL(10,4)` to keep the original precision and just round when displaying instead
 - Couldn't filter or sort directly on a window function's output in the same query had to calculate it inside a CTE first, then filter in the outer query
 
-## Running it yourself
+## How to run
 
 Create the table, load `all_stocks.csv` from the Python repo using `LOAD DATA INFILE`, then run through `stock_analysis_queries.sql`.
 
