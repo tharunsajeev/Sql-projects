@@ -41,4 +41,5 @@ MySQL 8.0, MySQL Workbench
 Create the table, load `all_stocks.csv` from the Python repo using `LOAD DATA INFILE`, then run through `stock_analysis_queries.sql`.
 
 ---
+
 [Tharun Sajeev](https://github.com/tharunsajeev)
