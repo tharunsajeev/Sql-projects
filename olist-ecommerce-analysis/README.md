@@ -173,4 +173,3 @@ Open `olist_ecommerce_analysis.sql` and run queries individually or all at once.
 ##  Author
 
 **Tharun Sajeev**  
-Aspiring Data Analyst
