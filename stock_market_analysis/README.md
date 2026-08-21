@@ -43,3 +43,5 @@ Create the table, load `all_stocks.csv` from the Python repo using `LOAD DATA IN
 ---
 
 [Tharun Sajeev](https://github.com/tharunsajeev)
+
+Aspiring Data Analyst
